@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text,TextInput, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, TextInput, View} from 'react-native';
 
 
 export default class App extends Component {
@@ -7,20 +7,33 @@ export default class App extends Component {
     phone: '',
     name: '',
   }
+
   handleChange = key => val => {
     this.setState({ [key]: val})
+  }
+
+  submitForm = () => {
+    alert(this.state.phone + '/n' + this.state.name)
   }
   render() {
     return (
       <View style={styles.container}>
         <TextInput 
           placeholder="Phone Number"
+          keyboardType="number-pad"
           style={styles.input}
+          value={this.setState.phone}
+          onChangeText={this.handleChange('phone')}
         />
         <TextInput 
           placeholder="Name"
           style={styles.input}
+          value={this.setState.phone}
+          onChangeText={this.handleChange('name')}
         />
+        <TouchableOpacity onPress={this.submitForm}>
+          <Text>Enter</Text>
+        </TouchableOpacity>
       </View>
     );
   }
