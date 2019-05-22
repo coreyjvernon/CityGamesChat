@@ -5,12 +5,28 @@ import {
   StatusBar,
   View,
 } from 'react-native';
+import firebase from 'firebase';
 import User from '../User';
 
 export default class AuthLoadingScreen extends React.Component {
   constructor(props) {
     super(props);
     this._bootstrapAsync();
+  }
+
+  componentWillMount () {
+    // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyA2iL68A1AuL1l-kPtCVGJkeLZYavS7MJ8",
+    authDomain: "citygameschat.firebaseapp.com",
+    databaseURL: "https://citygameschat.firebaseio.com",
+    projectId: "citygameschat",
+    storageBucket: "citygameschat.appspot.com",
+    messagingSenderId: "938955854414",
+    appId: "1:938955854414:web:e2e79efb931b9b4f"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
   }
 
   // Fetch the token from storage then navigate to our appropriate place
