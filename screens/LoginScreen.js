@@ -5,6 +5,9 @@ import User from '../User';
 
 
 export default class LoginScreen extends React.Component {
+  static navigationOptions ={
+    header:null
+  }
   state = {
     phone: '',
     name: '',
