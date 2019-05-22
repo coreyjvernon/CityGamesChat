@@ -1,7 +1,8 @@
 import React from 'react';
-import {StyleSheet, Text, Alert, TouchableOpacity, TextInput, View} from 'react-native';
+import {Text, Alert, TouchableOpacity, TextInput, View} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import User from '../User';
+import styles from '../constants/styles';
 
 
 export default class LoginScreen extends React.Component {
@@ -80,24 +81,3 @@ export default class LoginScreen extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  input: {
-    padding: 10,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    width: '90%',
-    marginBottom: 10,
-    borderRadius: 5
-  },
-  btnText: {
-    color: 'darkblue',
-    fontSize: 20
-  }
-});

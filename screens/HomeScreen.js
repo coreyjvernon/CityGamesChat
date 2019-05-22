@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, AsyncStorage, TouchableOpacity} from 'react-native';
-import User from '../User'
+import User from '../User';
+import styles from '../constants/styles'
 
 export default class HomeScreen extends React.Component{
 
@@ -15,7 +16,7 @@ export default class HomeScreen extends React.Component{
 
   render(){
     return(
-      <View>
+      <View style={styles.container}>
         <Text>
           {User.phone}
         </Text>
