@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, TouchableOpacity, TextInput, View} from 'react-native';
+import {StyleSheet, Text, Alert, TouchableOpacity, TextInput, View} from 'react-native';
+// import AsyncStorage from '@react-native-community/async-storage';
 
 
 export default class App extends Component {
@@ -8,12 +9,47 @@ export default class App extends Component {
     name: '',
   }
 
+  // storeData = async () => {
+  //   try {
+  //     await AsyncStorage.setItem('@storage_Key', 'stored value')
+  //   } catch (e) {
+  //     // saving error
+  //   }
+  // }
+  
+  // getData = async () => {
+  //   try {
+  //     const value = await AsyncStorage.getItem('@storage_Key')
+  //     if(value !== null) {
+  //       // value previously stored
+  //     }
+  //   } catch(e) {
+  //     // error reading value
+  //   }
+  // }
+
   handleChange = key => val => {
     this.setState({ [key]: val})
   }
 
-  submitForm = () => {
-    alert(this.state.phone + '/n' + this.state.name)
+  // componentWillMount(){
+  //   AsyncStorage.getItem('userPhone').then(val=>{
+  //     if(val){
+  //       this.setState({phone:val})
+  //     }
+  //   })
+  // }
+
+  submitForm = /*async*/ () => {
+    if (this.state.phone.length < 10){
+      Alert.alert('Error', 'Wrong Number')
+    } else if (this.state.name.length < 3) {
+      Alert.alert('Error', 'Wrong Name')
+    } else{
+// save user data
+      Alert.alert('Good')
+        // await AsyncStorage.setItem('userPhone', this.state.phone);
+    }
   }
   render() {
     return (
@@ -32,7 +68,7 @@ export default class App extends Component {
           onChangeText={this.handleChange('name')}
         />
         <TouchableOpacity onPress={this.submitForm}>
-          <Text>Enter</Text>
+          <Text style={styles.btnText}>Enter</Text>
         </TouchableOpacity>
       </View>
     );
@@ -51,7 +87,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     width: '90%',
-    marginBottom: 1,
+    marginBottom: 10,
     borderRadius: 5
+  },
+  btnText: {
+    color: 'darkblue',
+    fontSize: 20
   }
 });
