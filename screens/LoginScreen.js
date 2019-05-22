@@ -56,6 +56,7 @@ export default class LoginScreen extends React.Component {
       // Alert.alert('Good')
         await AsyncStorage.setItem('userPhone', this.state.phone);
         User.phone = this.state.phone;
+        firebase.database().ref('users/' + User.phone).set({name: this.state.name});
         this.props.navigation.navigate('App');
     }
   }
